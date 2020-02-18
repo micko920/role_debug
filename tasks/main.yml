@@ -1,0 +1,8 @@
+---
+- include_tasks: is_systemd.yml
+
+# Variable configuration.
+- include_tasks: variables.yml
+
+- include_tasks: setup-Debian.yml
+  when: ansible_os_family == 'Debian'

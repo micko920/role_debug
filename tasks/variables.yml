@@ -1,0 +1,14 @@
+---
+# Variable configuration.
+- name: Check os and version
+  debug:
+    msg: "{{ ansible_distribution }}-{{ ansible_distribution_version.split('.')[0] }}"
+
+- name: Include OS-specific variables (Debian).
+  include_vars: "{{ ansible_distribution }}-{{ ansible_distribution_version.split('.')[0] }}.yml"
+  when: ansible_os_family == 'Debian'
+
+- name: Define debug_packages.
+  set_fact:
+    debug_packages: "{{ __debug_packages | list }}"
+  when: debug_packages is not defined
