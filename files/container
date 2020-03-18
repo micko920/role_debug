@@ -1,0 +1,29 @@
+#!/bin/bash
+COMMAND=$1
+shift
+CONTAINER=$1
+
+if [ -z "$CONTAINER" ] ; then
+  CONTAINER=`docker ps -l -q`
+fi
+
+if [ -z "$COMMAND" ] ; then
+  CONTAINER=bash
+fi
+
+if [ -z "$CONTAINER" ] ; then
+  echo "no container to bash"
+fi
+
+case $COMMAND in
+  bash)
+      docker container exec -it $CONTAINER /bin/bash
+      ;;
+  kill)
+      docker kill $CONTAINER
+      ;;
+  *)
+        echo Need a command
+        exit 1
+        ;;
+esac

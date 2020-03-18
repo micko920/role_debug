@@ -4,3 +4,14 @@
     name: "{{ debug_packages }}"
     state: present
     update_cache: yes
+
+
+- name: Copy plugins for deployment
+  copy:
+    src: "{{ item }}"
+    dest: "/usr/bin/{{ item }}"
+    owner: "root"
+    group: "root"
+    mode: u=rwx,g=rx,o=rx
+  with_items:
+    - container
