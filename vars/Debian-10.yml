@@ -5,3 +5,4 @@ __debug_packages:
   - iputils-ping
   - curl
   - wget
+  - file
