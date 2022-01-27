@@ -1,8 +1,0 @@
----
-__debug_packages:
-  - less
-  - vim
-  - iputils-ping
-  - curl
-  - wget
-  - file
